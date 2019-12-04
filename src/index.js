@@ -1,3 +1,15 @@
+import './style.scss';
+import pageLoad from './js/pageload';
+import Weather from './js/weatherApp';
+
 window.onload = () => {
-  document.querySelector('.row').innerText = 'First Commit';
+  const weatherObj = new Weather(pageLoad());
+
+  const cityField = document.querySelector('#cityForm');
+  cityField.addEventListener('keypress', (e) => {
+    const key = e.which || e.keyCode;
+    if (key === 13) {
+      weatherObj.search();
+    }
+  });
 };
